@@ -7,5 +7,6 @@ import View.MainFrame;
  */
 public class MainController {
     public MainController(MainFrame mainFrame) {
+
     }
 }
