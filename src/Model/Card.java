@@ -5,24 +5,33 @@ package Model;
  */
 public class Card {
 
-    private String value;
-    private String sign;
+    private int value;
+    private int sign;
     private boolean flipped = false;
 
-    public Card(String value, String sign){
+    public Card(int value, int sign){
         this.value = value;
         this.sign = sign;
     }
 
-    public String getValue(){
+    public int getValue(){
         return value;
     }
 
-    public String getSign(){
+    public int getSign(){
         return sign;
     }
 
     public boolean getFlipped(){
         return flipped;
+    }
+
+    public void switchFlipped(){
+        if (flipped){
+            flipped = false;
+        }
+        if (!flipped){
+            flipped = true;
+        }
     }
 }
