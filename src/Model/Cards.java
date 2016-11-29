@@ -20,7 +20,7 @@ public class Cards implements InteractableObject{
     private double yPos;
     private Rectangle2D rectangle;
 
-    public Cards(String value, String sign, double xPos, double yPos){
+    public Cards(String sign , String value, double xPos, double yPos){
         this.value = value;
         this.sign = sign;
         this.xPos = xPos;
