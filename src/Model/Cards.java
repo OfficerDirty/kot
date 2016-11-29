@@ -57,6 +57,9 @@ public class Cards implements InteractableObject{
         }
         g2d.setColor(new Color(0,0,0));
         g2d.draw(rectangle);
+        if(flipped == true){
+            g2d.drawString(value, 800,300);
+        }
     }
 
 
