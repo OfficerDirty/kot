@@ -60,7 +60,6 @@ public class MainFrame extends JFrame {
         if (index < panels.size()){
             remove(activePanel);
             removeKeyListener(activePanel);
-
             activePanel = panels.get(index);
             add(activePanel);
             revalidate();

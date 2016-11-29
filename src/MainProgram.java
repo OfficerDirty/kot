@@ -18,6 +18,6 @@ public class MainProgram {
     }
 
     private static void setup(){
-        new MainController(new MainFrame("Erste graphische Ausgabe",50,50,1100,900));
+        new MainController(new MainFrame("Erste graphische Ausgabe",0,0,1000,900));
     }
 }

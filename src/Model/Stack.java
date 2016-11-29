@@ -1,7 +1,7 @@
 package Model;
 
 /**
- * Created by 204g04 on 07.11.2016.
+ * Created by Anthony on 07.11.2016.
  */
 public class Stack<ContentType> {
 

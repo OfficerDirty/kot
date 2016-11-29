@@ -1,97 +1,106 @@
 package Model;
 
+
 import View.DrawingPanel;
 import View.InteractableObject;
 
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import java.awt.event.MouseEvent;
-import java.lang.String;
-
 /**
- * Created by gast09 on 28.11.2016.
+ * Created by Anthony & Max on 28.11.2016.
  */
 public class Cards implements InteractableObject{
 
-    private String value;
-    private String sign;
-    private boolean flipped;
+    private int value;  // 0 = Ace, 10 = Jack, 11 = Queen, 12 = King
+    private int sign;  // 0 = Hearts, 1 = Diamond, 2 = Spade,3 = Club
     private double xPos;
-    private double yPos;
-    private Rectangle2D rectangle;
+    private double yPos = 100;
+    private boolean flipped;
+    private Rectangle rectangle = new Rectangle(100,100, 300,500);
+    private Image cardback1 = Toolkit.getDefaultToolkit().getImage("cardback.png");
+    private Image hearts = Toolkit.getDefaultToolkit().getImage("heart.png");
+    private Image diamond = Toolkit.getDefaultToolkit().getImage("diamond.png");
+    private Image clubs = Toolkit.getDefaultToolkit().getImage("clubs.png");
+    private Image spade = Toolkit.getDefaultToolkit().getImage("spades.png");
 
-    public Cards(String sign , String value, double xPos, double yPos){
+    public Cards(int sign , int value, boolean flipped){
+        this.flipped = flipped;
         this.value = value;
         this.sign = sign;
-        this.xPos = xPos;
-        this.yPos = yPos;
-        flipped = true;
-        createGraphics();
     }
 
-    private void createGraphics(){
-        rectangle = new Rectangle2D.Double(xPos,yPos,300,500);
+    public int getSign() {
+        return sign;
+    }
+    public int getValue(){
+        return value;
     }
 
-
-    public void draw(DrawingPanel dp, Graphics2D g2d){
-        if("Heart".equals(sign) && flipped == true){
-            g2d.setColor(new Color(255,0,0));
-            g2d.fill(rectangle);
-        }
-        if("Diamond".equals(sign) && flipped == true){
-            g2d.setColor(new Color(255,0,0));
-            g2d.fill(rectangle);
-        }
-        if("Spade".equals(sign) && flipped == true){
-            g2d.setColor(new Color(0,0,0));
-            g2d.fill(rectangle);
-        }
-        if("Club".equals(sign) && flipped == true){
-            g2d.setColor(new Color(0,0,0));
-            g2d.fill(rectangle);
-        }
-        if(flipped == false){
-            g2d.setColor(new Color(0,255,0));
-            g2d.fill(rectangle);
-        }
+    @Override
+    public void draw(DrawingPanel dp, Graphics2D g2d) {
         g2d.setColor(new Color(0,0,0));
-        g2d.draw(rectangle);
-        if(flipped == true){
-            g2d.drawString(value, 800,300);
+        g2d.fill(rectangle);
+        g2d.setColor(new Color(255,255,255));
+        if (flipped == true) {
+            //Draw the Sign
+            if (sign == 0) {
+                g2d.drawImage(hearts, 200, 325, null);
+            }
+            if (sign == 1) {
+                g2d.drawImage(diamond, 200, 325, null);
+            }
+            if (sign == 2) {
+                g2d.drawImage(spade, 200, 325, null);
+            }
+            if (sign == 3) {
+                g2d.drawImage(clubs, 200, 325, null);
+            }
+            //Draw the Value
+            if (value == 0){
+                g2d.drawString("Ace", 270, 380);
+            }else if (value == 10){
+                g2d.drawString("Jack", 270, 380);
+            }else if (value == 11){
+                g2d.drawString("Queen", 270, 380);
+            }else if (value == 12){
+                g2d.drawString("King", 270, 380);
+            }
+            else{
+                g2d.drawString("" + value, 270, 380);
+            }
         }
+        g2d.drawImage(cardback1, 600, 100, null);
     }
 
-
-    public void update(double dt){
-        if(flipped){
-            xPos = xPos+100*dt;
-        }
+    public void setXPos(double newPos){
+        xPos = newPos;
     }
-
-
 
     public void switchFlipped(){
-        if (flipped){
+        if(flipped){
             flipped = false;
         }
-        if (!flipped){
+        if(!flipped){
             flipped = true;
         }
     }
 
     @Override
-    public void keyPressed(int key){
+    public void update(double dt) {
+    }
+
+    @Override
+    public void keyPressed(int key) {
 
     }
 
     @Override
-    public void keyReleased(int key){
+    public void keyReleased(int key) {
 
     }
 
     @Override
-    public void mouseReleased(MouseEvent e){
+    public void mouseReleased(MouseEvent e) {
 
     }
 }
