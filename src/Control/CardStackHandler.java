@@ -34,15 +34,23 @@ public class CardStackHandler implements InteractableObject{
             newCard.switchFlipped();
             stack2.push(newCard);
         }
-        frame.getActiveDrawingPanel().addObject(newCard);
+        //frame.getActiveDrawingPanel().addObject(newCard);
+    }
+
+    public void showCards(){
+        frame.getActiveDrawingPanel().addObject(stack1.top());
+        frame.getActiveDrawingPanel().addObject(stack2.top());
     }
 
     public void switchStack(Stack<Cards> dummy1, Stack<Cards> dummy2){
+        frame.getActiveDrawingPanel().removeObject(dummy1.top());
+        frame.getActiveDrawingPanel().removeObject(dummy2.top());
         if (!dummy1.isEmpty()){
             dummy1.top().switchFlipped();
             dummy2.push(dummy1.top());
             dummy1.pop();
         }
+        showCards();
     }
 
     @Override
@@ -65,6 +73,7 @@ public class CardStackHandler implements InteractableObject{
         if(!stack1.isEmpty() && MouseInfo.getPointerInfo().getLocation().getX() >= 100 && MouseInfo.getPointerInfo().getLocation().getX() <= 400 &
            MouseInfo.getPointerInfo().getLocation().getY() >= 100 && MouseInfo.getPointerInfo().getLocation().getY() <= 600){
             switchStack(stack1,stack2);
+            //frame.repaint(0,0,800,800);
 
         }
         if(!stack2.isEmpty() && MouseInfo.getPointerInfo().getLocation().getX() >= 600 && MouseInfo.getPointerInfo().getLocation().getX() <= 900 &

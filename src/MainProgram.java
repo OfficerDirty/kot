@@ -18,6 +18,6 @@ public class MainProgram {
     }
 
     private static void setup(){
-        new MainController(new MainFrame("Erste graphische Ausgabe",0,0,1000,900));
+        new MainController(new MainFrame("a Kot production",0,0,1000,900));
     }
 }

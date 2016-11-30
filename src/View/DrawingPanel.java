@@ -46,8 +46,10 @@ public class DrawingPanel extends JPanel implements ActionListener, KeyListener,
         Iterator<DrawableObject> iterator = drawableObjects.iterator();
         while (iterator.hasNext()){
             DrawableObject tempDO = iterator.next();
-            tempDO.draw(this,g2d);
-            tempDO.update((double)dt/1000);
+            if(tempDO != null){
+                tempDO.draw(this,g2d);
+                tempDO.update((double)dt/1000);
+            }
         }
     }
 
@@ -124,7 +126,7 @@ public class DrawingPanel extends JPanel implements ActionListener, KeyListener,
         Iterator<DrawableObject> iterator = drawableObjects.iterator();
         while (iterator.hasNext()){
             DrawableObject tempDO = iterator.next();
-            if (tempDO instanceof InteractableObject){
+            if (tempDO != null && tempDO instanceof InteractableObject){
                 ((InteractableObject)tempDO).mouseReleased(e);
             }
         }

@@ -57,16 +57,16 @@ public class Cards implements InteractableObject{
             }
             //Draw the Value
             if (value == 0){
-                g2d.drawString("Ace", 270, 380);
+                g2d.drawString("Ace", 240, 320);
             }else if (value == 10){
-                g2d.drawString("Jack", 270, 380);
+                g2d.drawString("Jack", 240, 320);
             }else if (value == 11){
-                g2d.drawString("Queen", 270, 380);
+                g2d.drawString("Queen", 240, 320);
             }else if (value == 12){
-                g2d.drawString("King", 270, 380);
+                g2d.drawString("King", 240, 320);
             }
             else{
-                g2d.drawString("" + value, 270, 380);
+                g2d.drawString("" +(value+1), 247, 320);
             }
         }
         g2d.drawImage(cardback1, 600, 100, null);
